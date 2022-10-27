@@ -170,14 +170,14 @@ canvas {
     display: none;
     justify-content: center;
     grid-template-columns: repeat(2, minmax(500px, 500px));
-    gap: 30px;
+    
     width: 100%;
 }
 .tools-container {
     grid-template-columns: repeat(5, minmax(30px, 30px));
     grid-template-rows: repeat(6, minmax(30px, 30px));
     justify-content: center;
-    margin: auto;
+    /* margin: auto; */
     gap: 30px;
 }
 /* EDIT BUTTONS */

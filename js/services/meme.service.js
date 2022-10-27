@@ -159,7 +159,7 @@ function addTextLine() {
     if (nextLine) line.pos.y = 400;
     nextLine = false;
     gMeme.lines.push(line);
-    document.querySelector('.txt-input').placeholder = 'Add Text Here!';
+    document.querySelector('.txt-input').placeholder = 'Add New Text Here!';
 }
 
 function getEvPos(ev) {

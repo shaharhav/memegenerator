@@ -41,12 +41,20 @@ function addMouseListeners() {
     gCanvas.addEventListener('mousemove', onMove)
     gCanvas.addEventListener('mousedown', onDown)
     gCanvas.addEventListener('mouseup', onUp)
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+        renderCanvas()
+    });
 }
 
 function addTouchListeners() {
     gCanvas.addEventListener('touchmove', onMove)
     gCanvas.addEventListener('touchstart', onDown)
     gCanvas.addEventListener('touchend', onUp)
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+        renderCanvas()
+    });
 }
 
 function onSetText(txt) {
