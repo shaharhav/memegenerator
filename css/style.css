@@ -1,11 +1,13 @@
-:root{
+:root {
     /* Pallet */
-    --clrmain:#ffff;
-    --clrnav:#e0e0e0;
-    --clrwrt:#363636fd ;
+    --clrmain: #ffff;
+    --clrnav: #e0e0e0;
+    --clrwrt: #363636fd;
+    --clrwrt2: #000000fd;
     --clrhvr: #cc951f;
 }
-*{
+
+* {
     box-sizing: border-box;
 }
 
@@ -31,9 +33,10 @@
     margin: auto;
 }
 
-.marign-left{
+.marign-left {
     margin-left: 10px;
 }
+
 .clean-list {
     list-style-type: none;
     margin: 0;
@@ -63,13 +66,28 @@ body {
     border: unset;
 }
 
+.hamburger {
+    display: none;
+    background-color: transparent;
+    border: 0;
+    padding: 20px;
+    color: var(--clrwrt2);
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 21;
+}
+.hamburger.exit {
+    display: none;
+    z-index: 100;
+}
+
 nav {
     background-color: var(--clrmain);
-    color:var(--clrnav);
+    color: var(--clrnav);
     font-family: monospace;
     font-size: 1.2rem;
-    border-bottom: 1px solid var(--clrwrt) ;
-    
+    border-bottom: 1px solid var(--clrwrt);
+
 }
 
 nav ul {
@@ -81,7 +99,7 @@ nav ul {
 
 nav ul li {
     display: inline-block;
-    color: #fff;
+    color: var(--clrmain);
     font-family: 'Raleway', sans-serif;
     padding: 10px 20px;
     text-decoration: none;
@@ -90,13 +108,13 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color:var(--clrwrt);
+    color: var(--clrwrt);
 }
 
 nav ul li a:hover {
     cursor: pointer;
     color: var(--clrhvr);
-    
+
 }
 
 .main-gallery-container {
@@ -111,18 +129,20 @@ nav ul li a:hover {
     grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
     gap: 15px;
 }
-.saved-meme-container{
+
+.saved-meme-container {
     display: none;
     min-height: 100vh;
     width: 100%;
     text-align: center;
     justify-content: center;
     justify-items: center;
-    grid-template-columns: repeat(auto-fit,minmax(300px,300px));
-    gap:15px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+    gap: 15px;
 
 }
-.search-container{
+
+.search-container {
     margin-top: 10px;
     margin-bottom: 10px;
     width: 90vw;
@@ -132,18 +152,21 @@ nav ul li a:hover {
     padding: 3px 50px 3px 10px;
 
 }
-.search-box{
+
+.search-box {
     background-color: transparent;
     height: 35px;
     font-size: 1rem;
     border: 0;
     width: 100%;
     outline: none;
-    
+
 }
-.search-btn{
+
+.search-btn {
     display: none;
 }
+
 img {
     position: relative;
     width: 300px;
@@ -151,7 +174,7 @@ img {
     object-fit: cover;
     object-position: center;
     border-radius: 10%;
-    
+
 }
 
 img:hover {
@@ -160,19 +183,22 @@ img:hover {
     box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.57);
     transition: 0.2s ease-in-out;
 }
+
 canvas {
     margin: 1%;
     border: 2px solid rgb(43, 43, 43);
     border-radius: 5px;
     box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.57);
 }
+
 .canvas-page-container {
     display: none;
     justify-content: center;
     grid-template-columns: repeat(2, minmax(500px, 500px));
-    
+
     width: 100%;
 }
+
 .tools-container {
     grid-template-columns: repeat(5, minmax(30px, 30px));
     grid-template-rows: repeat(6, minmax(30px, 30px));
@@ -180,34 +206,44 @@ canvas {
     /* margin: auto; */
     gap: 30px;
 }
+.hamburger .exit{
+    display: none;
+}
+
 /* EDIT BUTTONS */
 .edit-buttons {
     max-width: 30px;
     max-height: 30px;
     border: none;
 }
+
 .fill-color {
     position: relative;
     grid-area: 4/5/4/6;
 }
+
 .stroke-color {
     position: relative;
     grid-area: 4/4/4/5;
 }
+
 .edit-buttons:hover {
     cursor: pointer;
     border: 1px solid rgb(51, 51, 51);
     box-shadow: none;
 }
+
 .txt-input {
     grid-area: 1/1/1/-1;
 }
+
 .fill-stroke-color-input {
     position: absolute;
     top: 0;
     left: 0;
     opacity: 0;
 }
+
 .trash-btn {
     grid-area: 2/4/3/5;
 }
@@ -219,6 +255,7 @@ canvas {
 .switch-line-btn {
     grid-area: 2/2/2/3;
 }
+
 .txt-align-right-btn {
     grid-area: 3/5/3/6;
 }
@@ -234,6 +271,7 @@ canvas {
 .size-down-btn {
     grid-area: 3/2/3/3;
 }
+
 .size-up-btn {
     grid-area: 3/1/3/2;
 }
@@ -241,29 +279,122 @@ canvas {
 .font-btn {
     grid-area: 4/1/4/4;
 }
+
 .memes-page-delete-btn,
 .download-btn,
 .facebook-btn,
-.save-meme-btn{
+.save-meme-btn {
     background-color: var(--clrhvr);
-    border:unset;
+    border: unset;
     border-radius: 10px;
 }
-.download-btn{
+
+.download-btn {
     grid-area: 6/4/6/6;
 }
-.facebook-btn{
+
+.facebook-btn {
     grid-area: 6/3/6/4;
 }
-.save-meme-btn{
-    grid-area:6/1/6/3 ;
+
+.save-meme-btn {
+    grid-area: 6/1/6/3;
 }
+
 .memes-page-delete-btn:hover,
 .download-btn:hover,
-.save-meme-btn:hover{
+.save-meme-btn:hover {
     cursor: pointer;
     border: 1px solid rgb(51, 51, 51);
     box-shadow: none;
 }
 
 
+@media(max-width:680px) {
+    canvas {
+        width: 60vw;
+        height: 60vh;
+    }
+
+    .main-gallery-container {
+        grid-template-columns: repeat(2, minmax(175px, 175px));
+    }
+
+    img {
+        width: 175px;
+        height: 175px;
+    }
+
+
+    body.menu-open .main-screen {
+        display: block;
+    }
+
+    .nav-ul {
+        position: fixed;
+        background-color: var(--clrhvr);
+        flex-direction: column;
+        top: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 20;
+        transform: translateX(100%);
+        transition: transform 0.7s;
+
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hamburger {
+        display: block;
+    }
+   
+
+    body.menu-open .nav-ul {
+        transform: translateX(0);
+    }
+
+    nav ul li a {
+        color: var(--clrmain);
+
+    }
+    nav ul li a:hover {
+        color: var(--clrwrt2);
+
+    }
+    .fas .fa-bars{
+        color: var(--clrwrt2);
+    }
+
+    .main-screen {
+        position: fixed;
+        height: 20px;
+        width: 20px;
+        top: 0;
+        right: 0;
+        background-color:transparent;
+        z-index: 30;
+        cursor: pointer;
+        display: none;
+        padding: 20px;
+    }
+    
+}
+
+@media(max-width:1050px) {
+    canvas {
+        width: 60vw;
+        height: 60vw;
+    }
+
+    .canvas-page-container {
+        justify-items: center;
+        grid-template-columns: minmax(300px, 350px);
+
+    }
+}

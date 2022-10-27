@@ -106,6 +106,7 @@ function onUp() {
     document.body.style.cursor = 'default'
 }
 function markSelectedTextLine(line) {
+    
     const x = line.pos.x;
     const y = line.pos.y;
     const lineHeight = line.size + 20;

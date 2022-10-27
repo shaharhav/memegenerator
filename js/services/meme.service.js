@@ -159,7 +159,9 @@ function addTextLine() {
     if (nextLine) line.pos.y = 400;
     nextLine = false;
     gMeme.lines.push(line);
-    document.querySelector('.txt-input').placeholder = 'Add New Text Here!';
+
+    document.querySelector('.txt-input').placeholder = (gMeme.lines[gMeme.selectedLineIdx].txt) ? gMeme.lines[gMeme.selectedLineIdx].txt : 'Add New Text Here!';
+
 }
 
 function getEvPos(ev) {
@@ -211,6 +213,7 @@ function saveMeme() {
     saveToStorage(STORAGE_KEY, gSavedMemes);
 }
 function showSavedMemesPage() {
+    document.body.classList.remove('menu-open');
     document.querySelector('.saved-meme-container').style.display = 'grid';
     // document.querySelector('.about').style.display='none';
     document.querySelector('.main-gallery-container').style.display = 'none';
@@ -218,18 +221,25 @@ function showSavedMemesPage() {
     renderMemesPage();
 }
 function showGalleryPage() {
+    document.body.classList.remove('menu-open');
     defaultMeme();
     document.querySelector('.main-gallery-container').style.display = 'grid';
     // document.querySelector('.about').style.display='block';
     document.querySelector('.saved-meme-container').style.display = 'none';
     document.querySelector('.canvas-page-container').style.display = 'none';
 }
-
+function onNavToggle() {
+    document.body.classList.toggle('menu-open');
+    document.querySelector('.hamburger exit').style.display='block';
+}
 
 function defaultMeme() {
-    createMeme();
 
     document.querySelector('.txt-input').placeholder = 'Add Text Here!';
+    document.querySelector('.txt-input').value = '';
+
+    createMeme();
+
 }
 
 
