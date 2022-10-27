@@ -43,7 +43,7 @@ function addMouseListeners() {
     gCanvas.addEventListener('mouseup', onUp)
     window.addEventListener('resize', () => {
         resizeCanvas()
-        renderCanvas()
+        // renderCanvas()
     });
 }
 
