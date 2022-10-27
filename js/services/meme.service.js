@@ -230,7 +230,6 @@ function showGalleryPage() {
 }
 function onNavToggle() {
     document.body.classList.toggle('menu-open');
-    document.querySelector('.hamburger exit').style.display='block';
 }
 
 function defaultMeme() {
