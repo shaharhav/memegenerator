@@ -87,19 +87,6 @@ nav ul li {
     text-decoration: none;
 }
 
-.hamburger {
-    display: none;
-    padding: 20px;
-    background-color: transparent;
-    border: 0;
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.hamburger:focus {
-    outline: none;
-}
 
 nav ul li a {
     text-decoration: none;
@@ -279,23 +266,4 @@ canvas {
     box-shadow: none;
 }
 
-/* .about-image{
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-}
-.about{
-    margin-top: 15px;
-    background-color: var(--clrmain)
 
-}
-.about img:hover {
-    cursor: default;
-    border: none;
-    box-shadow: none;
-    
-}
-.info p {
-    font-size: 1rem;
-    font-family: monospace;
-} */

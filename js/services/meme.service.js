@@ -3,7 +3,7 @@ const STORAGE_KEY = 'memesDB'
 
 var gSavedMemes;
 var nextLine = true;
-var gForDownload=false;
+var gForDownload = false;
 
 
 var gImgs = [
@@ -49,6 +49,28 @@ var gMeme = {
         },
     }]
 };
+
+function createMeme() {
+    gMeme = {
+        selectedImgId: 2,
+        selectedLineIdx: 0,
+        lines: [{
+            txt: 'Your Text Here',
+            font: 'impact',
+            stroke: 'black',
+            fill: 'white',
+            size: 30,
+            align: 'center',
+            isDrag: false,
+            isSelected: false,
+
+            pos: {
+                x: 250,
+                y: 50
+            },
+        }]
+    };
+}
 function renderGallery() {
     const images = getImgs();
     var strHTMLs = images.map((img) => {
@@ -66,7 +88,7 @@ function renderMeme() {
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height);
     if (meme.lines.length) {
         meme.lines.forEach(line => drawTextLine(line));
-        if(gForDownload)return;
+        if (gForDownload) return;
         markSelectedTextLine(meme.lines[meme.selectedLineIdx]);
     }
 }
@@ -99,6 +121,7 @@ function setFontSize(diff) {
 function switchTextLine(lineIdx) {
     if (lineIdx || lineIdx === 0) gMeme.selectedLineIdx = lineIdx;
     else gMeme.selectedLineIdx = (gMeme.selectedLineIdx === (gMeme.lines.length - 1)) ? 0 : gMeme.selectedLineIdx + 1;
+    document.querySelector('.txt-input').placeholder = gMeme.lines[gMeme.selectedLineIdx].txt;
 }
 function deleteTextLine() {
     if (!gMeme.lines[gMeme.selectedLineIdx]) return;
@@ -135,6 +158,7 @@ function addTextLine() {
     if (nextLine) line.pos.y = 400;
     nextLine = false;
     gMeme.lines.push(line);
+    document.querySelector('.txt-input').placeholder = 'Add Text Here!';
 }
 
 function getEvPos(ev) {
@@ -177,33 +201,34 @@ function moveLine(dx, dy) {
 function setFontFamily(fontFam) {
     gMeme.lines[gMeme.selectedLineIdx].font = fontFam;
 }
-function saveMeme(){
-    gForDownload=true;
+function saveMeme() {
+    gForDownload = true;
     renderMeme();
-    const meme =new Image();
-    meme.src=gCanvas.toDataURL();
+    const meme = new Image();
+    meme.src = gCanvas.toDataURL();
     gSavedMemes.push(meme.src);
-    saveToStorage(STORAGE_KEY,gSavedMemes);
+    saveToStorage(STORAGE_KEY, gSavedMemes);
 }
-function showSavedMemesPage(){
-    document.querySelector('.saved-meme-container').style.display='grid';
+function showSavedMemesPage() {
+    document.querySelector('.saved-meme-container').style.display = 'grid';
     // document.querySelector('.about').style.display='none';
-    document.querySelector('.main-gallery-container').style.display='none';
-    document.querySelector('.canvas-page-container').style.display='none';
+    document.querySelector('.main-gallery-container').style.display = 'none';
+    document.querySelector('.canvas-page-container').style.display = 'none';
     renderMemesPage();
 }
-function showGalleryPage(){
+function showGalleryPage() {
     defaultMeme();
-    document.querySelector('.main-gallery-container').style.display='grid';
+    document.querySelector('.main-gallery-container').style.display = 'grid';
     // document.querySelector('.about').style.display='block';
-    document.querySelector('.saved-meme-container').style.display='none';
-    document.querySelector('.canvas-page-container').style.display='none';
+    document.querySelector('.saved-meme-container').style.display = 'none';
+    document.querySelector('.canvas-page-container').style.display = 'none';
 }
 
 
-function defaultMeme(){
-    setLineTxt('Your Text Here');
-    document.querySelector('.txt-input').value='';
+function defaultMeme() {
+    createMeme();
+
+    document.querySelector('.txt-input').placeholder = 'Add Text Here!';
 }
 
 
