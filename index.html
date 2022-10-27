@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Meme Gen</title>
+
+</head>
+
+<body onload="onInit()">
+    <div class="main-screen" onclick="onNavToggle()"></div>
+
+    <header>
+        <nav class="flex space-between align-item-center">
+            <div class="logo margin-left"><img class="logo" src="img/LOGO/LOGO.png" alt=""></div>
+
+
+
+            <ul class="nav-ul flex clean-list" id="nav-ul">
+                <li><a href="#gallery" onclick="onShowGalleryPage()">Gallery</a></li>
+                <li><a href="#" onclick="onShowSavedMemesPage()">Memes</a></li>
+                <!-- <li><a href="#about" onclick="onShowGalleryPage()">About</a></li> -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="filter-main-container">
+            <div class="search-container margin-left flex" >
+                <input class="search-box" type="text" placeholder="Search Here" name="search">
+                <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+            </div> 
+        </section>
+
+
+        <section class="main-gallery-container grid"></section>
+        <section class="canvas-page-container">
+
+
+            <canvas class="canvas" height="500px" width="500px"></canvas>
+            <div class="tools-container grid">
+
+                <input class="txt-input" type="text" name="txt" oninput="onSetText(this.value)"
+                    placeholder="Enter Text Here...">
+                <div class="edit-buttons fill-color">
+                    <img class="edit-buttons fill-color-btn" src="img/Icons/paint-board-and-brush.png">
+                    <input class="edit-buttons fill-stroke-color-input" type="color" name="fill"
+                        oninput="onSetColor(this.value,'fill')">
+                </div>
+                <div class="edit-buttons stroke-color">
+                    <img class="edit-buttons stroke-color-btn" src="img/Icons/text stroke.png">
+                    <input class="edit-buttons fill-stroke-color-input" type="color" name="stroke"
+                        oninput="onSetColor(this.value,'stroke')">
+                </div>
+                <img class="edit-buttons size-up-btn" src="img/Icons/increase font - icon.png"
+                    onclick="onSetFontSize(3)">
+                <img class="edit-buttons size-down-btn" src="img/Icons/decrease font - icon.png"
+                    onclick="onSetFontSize(-3)">
+                <img class="edit-buttons switch-line-btn"
+                    src="img/Icons/up-and-down-opposite-double-arrows-side-by-side.png" onclick="onSwitchTextLine()">
+                <img class="edit-buttons add-btn" src="./img/Icons/add.png" onclick="onAddTextLine()">
+                <img class="edit-buttons trash-btn " src="./img/Icons/trash.png" onclick="onDeleteTextLine()">
+                <img class="edit-buttons txt-align-left-btn" src="./img/Icons/align-to-left.png"
+                    onclick="onSetAlign('start')">
+                <img class="edit-buttons txt-align-center-btn" src="./img/Icons/center-text-alignment.png"
+                    onclick="onSetAlign('center')">
+                <img class="edit-buttons txt-align-right-btn" src="./img/Icons/align-to-right.png"
+                    onclick="onSetAlign('end')">
+                <select class="font-btn" name="fontFam" onchange="onSetFontFamily(this.value)">
+                    <option value="impact">Impact</option>
+                    <option value="arial">Arial</option>
+                    <option value="monospace">Monospace</option>
+                    <option value="rockwell">Rockwell</option>
+                </select>
+                <button class="download-btn"><a href="#" onclick="onDownloadMeme(this)">download</a></button>
+                <img class="edit-buttons facebook-btn" src="./img/Icons/facebook-logo.png"
+                    onclick="onUploadMeme(this)"></a>
+                <button class="save-meme-btn" onclick="onSaveMeme()">Save Meme</button>
+
+            </div>
+        </section>
+        <div class="saved-meme-container grid">
+        </div>
+        <!-- <div class="about flex">
+        <div ><img class="about-image flex align-item-center" src="img/me.jpg"></div>
+        <div class="info margin-center">
+            <h2>Shahar Haviv</h2>
+            <p>Lorem ipsum dolor sit amet consectetur</p>
+            <p>labore ad accusantium</p>
+            <p>adipisicing elit. Porro distinctio, culpa</p>
+            <div class="links">
+                
+            </div>
+        </div>
+    </div> -->
+
+    </main>
+
+
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/upload.service.js"></script>
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/services/utils.service.js"></script>
+    <script src="js/controllers/meme.controller.js"></script>
+    <script src="js/controllers/canvas.controller.js"></script>
+</body>
+
+</html>
