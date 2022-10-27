@@ -35,26 +35,25 @@ function drawTextLine(line) {
 function addEventListeners() {
     addMouseListeners();
     addTouchListeners();
+    // window.addEventListener('resize', () => {
+    //     resizeCanvas();
+    //     renderCanvas();
+    // });
+
 }
 
 function addMouseListeners() {
-    gCanvas.addEventListener('mousemove', onMove)
-    gCanvas.addEventListener('mousedown', onDown)
-    gCanvas.addEventListener('mouseup', onUp)
-    window.addEventListener('resize', () => {
-        resizeCanvas()
-        // renderCanvas()
-    });
+    gCanvas.addEventListener('mousemove', onMove);
+    gCanvas.addEventListener('mousedown', onDown);
+    gCanvas.addEventListener('mouseup', onUp);
+    
 }
 
 function addTouchListeners() {
-    gCanvas.addEventListener('touchmove', onMove)
-    gCanvas.addEventListener('touchstart', onDown)
-    gCanvas.addEventListener('touchend', onUp)
-    window.addEventListener('resize', () => {
-        resizeCanvas()
-        renderCanvas()
-    });
+    gCanvas.addEventListener('touchmove', onMove);
+    gCanvas.addEventListener('touchstart', onDown);
+    gCanvas.addEventListener('touchend', onUp);
+   
 }
 
 function onSetText(txt) {
