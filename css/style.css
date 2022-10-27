@@ -132,7 +132,7 @@ nav ul li a:hover {
 
 .saved-meme-container {
     display: none;
-    min-height: 100vh;
+    height: 300px;
     width: 100%;
     text-align: center;
     justify-content: center;
@@ -318,6 +318,15 @@ canvas {
 
     .main-gallery-container {
         grid-template-columns: repeat(2, minmax(175px, 175px));
+    }
+    .saved-meme-container {
+        grid-template-columns: repeat(2, minmax(175px, 175px));
+        gap:50px
+
+    }
+    .img-container{
+
+        height: 175px;
     }
 
     img {
