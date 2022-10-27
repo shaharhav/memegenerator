@@ -122,6 +122,7 @@ function switchTextLine(lineIdx) {
     if (lineIdx || lineIdx === 0) gMeme.selectedLineIdx = lineIdx;
     else gMeme.selectedLineIdx = (gMeme.selectedLineIdx === (gMeme.lines.length - 1)) ? 0 : gMeme.selectedLineIdx + 1;
     document.querySelector('.txt-input').placeholder = gMeme.lines[gMeme.selectedLineIdx].txt;
+    document.querySelector('.txt-input').value = '';
 }
 function deleteTextLine() {
     if (!gMeme.lines[gMeme.selectedLineIdx]) return;
