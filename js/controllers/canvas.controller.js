@@ -1,7 +1,8 @@
 'use strict'
-var gCanvas;
-var gCtx;
-var gStartPos;
+let gCanvas;
+let gCtx;
+let gStartPos;
+
 
 
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend'];
@@ -13,9 +14,16 @@ function initMeme(imgId) {
     setImg(imgId);
     renderMeme();
 }
+function initSavedMeme(imgId) {
+    gCanvas = document.querySelector('.canvas');
+    gCtx = gCanvas.getContext('2d');
+    addEventListeners();
+    renderSavedMeme(imgId);
+}
 function onSetColor(color, part) {
     setColor(color, part);
-    renderMeme();
+    if(gMeme.isSavedMeme)renderSavedMeme(gMeme.selectedImgId);
+    else renderMeme();
 }
 
 
@@ -58,26 +66,30 @@ function addTouchListeners() {
 
 function onSetText(txt) {
     setLineTxt(txt);
-    renderMeme();
+    if(gMeme.isSavedMeme)renderSavedMeme(gMeme.selectedImgId);
+    else renderMeme();
 }
 
 
 function onSetFontSize(diff) {
     setFontSize(+diff);
-    renderMeme();
+    if(gMeme.isSavedMeme)renderSavedMeme(gMeme.selectedImgId);
+    else renderMeme();
 }
 
 
 function onSwitchTextLine() {
     switchTextLine();
-    renderMeme();
+    if(gMeme.isSavedMeme)renderSavedMeme(gMeme.selectedImgId);
+    else renderMeme();
     document.focus = document.querySelector('input[name="txt"]')
 }
 
 
 function onAddTextLine() {
     addTextLine();
-    renderMeme();
+    if(gMeme.isSavedMeme)renderSavedMeme(gMeme.selectedImgId);
+    else renderMeme();
 }
 
 function onDown(ev) {
@@ -98,7 +110,8 @@ function onMove(ev) {
     const dy = pos.y - gStartPos.y
     moveLine(dx, dy)
     gStartPos = pos
-    renderMeme()
+    if(gMeme.isSavedMeme)renderSavedMeme(gMeme.selectedImgId);
+    else renderMeme();
 }
 
 function onUp() {
@@ -126,21 +139,25 @@ function markSelectedTextLine(line) {
 }
 function onDeleteTextLine() {
     deleteTextLine();
-    renderMeme();
+    if(gMeme.isSavedMeme)renderSavedMeme(gMeme.selectedImgId);
+    else renderMeme();
 }
 
 function onSetAlign(dire) {
     setAlign(dire);
-    renderMeme();
+    if(gMeme.isSavedMeme)renderSavedMeme(gMeme.selectedImgId);
+    else renderMeme();
 }
 function onSetFontFamily(fontFam) {
     setFontFamily(fontFam);
-    renderMeme();
+    if(gMeme.isSavedMeme)renderSavedMeme(gMeme.selectedImgId);
+    else renderMeme();
 }
 
 function onDownloadMeme(elLink) {
     gForDownload = true;
-    renderMeme();
+    if(gMeme.isSavedMeme)renderSavedMeme(gMeme.selectedImgId);
+    else renderMeme();
     const data = gCanvas.toDataURL();
     elLink.href = data;
     elLink.download = 'my-meme.jpg'

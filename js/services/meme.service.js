@@ -6,6 +6,7 @@ var nextLine = true;
 var gForDownload = false;
 
 
+
 var gImgs = [
     { id: 1, url: 'img/1.jpg' },
     { id: 2, url: 'img/2.jpg' },
@@ -33,6 +34,7 @@ var gImgs = [
 var gMeme = {
     selectedImgId: 2,
     selectedLineIdx: 0,
+    isSavedMeme: false,
     lines: [{
         txt: 'Your Text Here',
         font: 'impact',
@@ -54,6 +56,7 @@ function createMeme() {
     gMeme = {
         selectedImgId: 2,
         selectedLineIdx: 0,
+        isSavedMeme: false,
         lines: [{
             txt: 'Your Text Here',
             font: 'impact',
@@ -80,18 +83,7 @@ function renderGallery() {
     elGallery.innerHTML = strHTMLs.join('');
 }
 
-function renderMeme() {
-    const meme = getMeme();
-    const elImg = getElImgById(meme.selectedImgId);
-    document.querySelector('.main-gallery-container').style.display = 'none';
-    document.querySelector('.canvas-page-container').style.display = 'grid';
-    gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height);
-    if (meme.lines.length) {
-        meme.lines.forEach(line => drawTextLine(line));
-        if (gForDownload) return;
-        markSelectedTextLine(meme.lines[meme.selectedLineIdx]);
-    }
-}
+
 
 function getImgs() {
     return gImgs;
@@ -165,7 +157,7 @@ function addTextLine() {
 }
 
 function getEvPos(ev) {
-    var pos = {
+    let pos = {
         x: ev.offsetX,
         y: ev.offsetY
     }
@@ -173,8 +165,8 @@ function getEvPos(ev) {
         ev.preventDefault()
         ev = ev.changedTouches[0]
         pos = {
-            x: ev.pageX - ev.target.offsetLeft,
-            y: ev.pageY - ev.target.offsetTop
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
         }
     }
     return pos
@@ -206,7 +198,8 @@ function setFontFamily(fontFam) {
 }
 function saveMeme() {
     gForDownload = true;
-    renderMeme();
+    if(gMeme.isSavedMeme)renderSavedMeme(gMeme.selectedImgId);
+    else renderMeme();
     const meme = new Image();
     meme.src = gCanvas.toDataURL();
     gSavedMemes.push(meme.src);
@@ -214,6 +207,7 @@ function saveMeme() {
 }
 function showSavedMemesPage() {
     document.body.classList.remove('menu-open');
+    defaultMeme();
     document.querySelector('.saved-meme-container').style.display = 'grid';
     // document.querySelector('.about').style.display='none';
     document.querySelector('.main-gallery-container').style.display = 'none';
