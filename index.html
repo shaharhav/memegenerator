@@ -18,19 +18,19 @@
             <div class="logo margin-left"><img class="logo" src="./img/Logo/logo.JPG" alt=""></div>
             <div class="hamburger" onclick="onNavToggle()" >🔳</div>
             <ul class="nav-ul flex clean-list" id="nav-ul">
-                <li><a href="#gallery" onclick="onShowGalleryPage()">Gallery</a></li>
-                <li><a href="#" onclick="onShowSavedMemesPage()">Memes</a></li>
+                <li><a href="#gallery" onclick="onShowGalleryPage()" class="gallery selected">Gallery</a></li>
+                <li><a href="#" onclick="onShowSavedMemesPage()" class="memes">Memes</a></li>
                 <!-- <li><a href="#about" onclick="onShowGalleryPage()">About</a></li> -->
             </ul>
         </nav>
     </header>
     <main>
-        <section class="filter-main-container">
+        <!-- <section class="filter-main-container">
             <div class="search-container flex">
                 <input class="search-box" type="text" placeholder="Search Here" name="search">
                 <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
             </div>
-        </section>
+        </section> -->
 
 
         <section class="main-gallery-container grid"></section>
@@ -72,7 +72,7 @@
                     <option value="monospace">Monospace</option>
                     <option value="rockwell">Rockwell</option>
                 </select>
-                <button class="download-btn"><a href="#" onclick="onDownloadMeme(this)">download</a></button>
+                <button class="download-btn"><a href="#" onclick="onDownloadMeme(this)">Download</a></button>
                 <img class="edit-buttons facebook-btn" src="./img/Icons/facebook-logo.png"
                     onclick="onUploadMeme(this)"></a>
                 <button class="save-meme-btn" onclick="onSaveMeme()">Save Meme</button>
@@ -95,12 +95,14 @@
     </div> -->
 
     </main>
-
+    <footer class="footer-container">
+        <p>All Coffee Rights are Deserved</p>
+    </footer>
 
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/upload.service.js"></script>
     <script src="js/services/meme.service.js"></script>
-    <script src="js/services/utils.service.js"></script>
+    <!-- <script src="js/services/utils.service.js"></script> -->
     <script src="js/controllers/meme.controller.js"></script>
     <script src="js/controllers/canvas.controller.js"></script>
 </body>

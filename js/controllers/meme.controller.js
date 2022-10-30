@@ -12,6 +12,7 @@ function onInit() {
 function renderMeme() {
     const meme = getMeme();
     const elImg = getElImgById(meme.selectedImgId);
+    // document.querySelector('.search-container').style.display = 'none';
     document.querySelector('.main-gallery-container').style.display = 'none';
     document.querySelector('.saved-meme-container').style.display = 'none';
     document.querySelector('.canvas-page-container').style.display = 'grid';
@@ -27,11 +28,12 @@ function renderMeme() {
     }
 }
 function renderSavedMeme(imgId) {
-    
+
     const meme = getMeme();
     const elImg = new Image();
-    elImg.src=gSavedMemes[imgId];
+    elImg.src = gSavedMemes[imgId];
     // const elImg = getElImgById(meme.selectedImgId);
+    // document.querySelector('.search-container').style.display = 'none';
     document.querySelector('.main-gallery-container').style.display = 'none';
     document.querySelector('.saved-meme-container').style.display = 'none';
     document.querySelector('.canvas-page-container').style.display = 'grid';
@@ -48,25 +50,28 @@ function renderSavedMeme(imgId) {
 }
 
 function onSavedImgSelect(imgId) {
-    gMeme.selectedImgId=imgId;
-    gMeme.isSavedMeme=true;
+    document.querySelector('.memes').classList.remove('selected');
+    gMeme.selectedImgId = imgId;
+    gMeme.isSavedMeme = true;
     initSavedMeme(imgId);
 }
 function onImgSelect(imgId) {
+    document.querySelector('.gallery').classList.remove('selected');
     initMeme(imgId);
 }
-function onShowSavedMemesPage(){
+function onShowSavedMemesPage() {
+
     showSavedMemesPage();
 }
-function onShowGalleryPage(){
+function onShowGalleryPage() {
     showGalleryPage();
 }
-function onShowAboutPage(){
+function onShowAboutPage() {
     showAboutPage();
 }
-function renderMemesPage(){
-    const imgs= gSavedMemes;
-    const strHTML= imgs.map((img,idx)=>{
+function renderMemesPage() {
+    const imgs = gSavedMemes;
+    const strHTML = imgs.map((img, idx) => {
         return `<div class="img-container" ><img id=${idx} onclick="onSavedImgSelect(${idx})" src="${img}"> <br>
          <button class="memes-page-delete-btn" onclick="onDeleteMeme(${idx})">Delete Meme</button>
         </div>`
@@ -75,8 +80,8 @@ function renderMemesPage(){
 }
 
 
-function onDeleteMeme(idx){
-    gSavedMemes.splice(idx,1);
-    saveToStorage(STORAGE_KEY,gSavedMemes);
+function onDeleteMeme(idx) {
+    gSavedMemes.splice(idx, 1);
+    saveToStorage(STORAGE_KEY, gSavedMemes);
     renderMemesPage();
 }

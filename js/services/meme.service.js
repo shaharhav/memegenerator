@@ -206,19 +206,25 @@ function saveMeme() {
     saveToStorage(STORAGE_KEY, gSavedMemes);
 }
 function showSavedMemesPage() {
+    document.querySelector('.gallery').classList.remove('selected');
+    document.querySelector('.memes').classList.add('selected');
     document.body.classList.remove('menu-open');
     defaultMeme();
+    document.body.classList.add('overflow');
     document.querySelector('.saved-meme-container').style.display = 'grid';
-    // document.querySelector('.about').style.display='none';
+    // document.querySelector('.search-container').style.display = 'block';
     document.querySelector('.main-gallery-container').style.display = 'none';
     document.querySelector('.canvas-page-container').style.display = 'none';
     renderMemesPage();
 }
 function showGalleryPage() {
+    document.body.classList.remove('overflow');
     document.body.classList.remove('menu-open');
+    document.querySelector('.gallery').classList.add('selected');
+    document.querySelector('.memes').classList.remove('selected');
     defaultMeme();
     document.querySelector('.main-gallery-container').style.display = 'grid';
-    // document.querySelector('.about').style.display='block';
+    // document.querySelector('.search-container').style.display = 'block';
     document.querySelector('.saved-meme-container').style.display = 'none';
     document.querySelector('.canvas-page-container').style.display = 'none';
 }
