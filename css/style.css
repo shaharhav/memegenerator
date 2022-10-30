@@ -469,14 +469,15 @@ footer {
 
 @media(max-width:1050px) {
     canvas {
-        width: 60vw;
-        height: 60vw;
+        width: 50vw;
+        height: 50vw;
     }
 
     .canvas-page-container {
         justify-items: center;
         grid-template-columns: minmax(250px, 250px);
         margin-left: auto;
+        margin-top: 25px;
 
     }
 }
